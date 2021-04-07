@@ -1,0 +1,439 @@
+@import "src/asset/scss/common/global";
+
+#clipRecommend {
+  &.subContent {
+    padding: 0px 16px 16px;
+  }
+  .btnDateBox {
+    @include flex("", space-between);
+    height: 52px;
+
+    .date {
+      font-size: 16px;
+      color: $primary;
+      font-weight: $bold;
+      line-height: 16px;
+    }
+
+    button {
+      line-height: 52px;
+      color: #7f7f7f;
+      font-weight: $bold;
+      font-size: 14px;
+
+      &:first-child {
+        background: url("#{$IMG_SERVER}/svg/arrow_left_g.svg") left center
+          no-repeat;
+        padding-left: 24px;
+
+        &.on {
+          background: url("#{$IMG_SERVER}/svg/arrow_left_b.svg") left center
+            no-repeat;
+          color: $black;
+          cursor: pointer;
+        }
+      }
+
+      &:last-child {
+        background: url("#{$IMG_SERVER}/svg/arrow_right_g.svg") right center
+          no-repeat;
+        padding-right: 24px;
+
+        &.on {
+          background: url("#{$IMG_SERVER}/svg/arrow_right_b.svg") right center
+            no-repeat;
+          color: $black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .playBox {
+    background: $white;
+    padding: 16px;
+    @include border-radius(16px);
+    @include box-sizing;
+
+    .title {
+      font-size: 18px;
+      font-weight: $bold;
+      text-align: center;
+      @include multi-ellipsis(1);
+    }
+
+    .video {
+      position: relative;
+      overflow: hidden;
+      height: 208px;
+      margin-top: 16px;
+      @include border-radius(12px);
+      cursor: pointer;
+      img {
+        width: 100%;
+      }
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 32px;
+        height: 32px;
+        @include border-radius(50%);
+        background: url("#{$IMG_SERVER}/svg/play_purple_s_p.svg") center center
+          no-repeat $white;
+        content: "";
+      }
+    }
+
+    .videoItem {
+      width: 100%;
+      margin-top: 7px;
+      @include flex("", space-between);
+      .scoreList {
+        @include flexbox;
+
+        li + li {
+          margin-left: 6px;
+        }
+        .scoreItem {
+          .scoreButton {
+            img {
+              width: 28px;
+              vertical-align: middle;
+            }
+          }
+          .scoreCount {
+            display: block;
+            color: $greishGray;
+            text-align: center;
+            font-size: 12px;
+            font-weight: $bold;
+          }
+        }
+      }
+
+      .snsBox {
+        @include flexbox;
+        align-self: flex-start;
+
+        .snsTitle {
+          margin-right: 6px;
+          height: 28px;
+          line-height: 28px;
+          color: $greishGray;
+          font-size: 12px;
+        }
+
+        .snsList {
+          display: flex;
+          button + button {
+            margin-left: 6px;
+          }
+        }
+      }
+
+      .userProfile {
+        @include flexbox;
+        margin-left: auto;
+
+        &__list {
+          display: inline-block;
+          position: relative;
+          margin-left: 4px;
+          width: 32px;
+          height: 32px;
+          cursor: pointer;
+
+          &::after {
+            content: "";
+            position: absolute;
+            right: 1px;
+            bottom: 1px;
+            width: 12px;
+            height: 12px;
+          }
+
+          &:nth-child(1) {
+            &::after {
+              background: url("#{$IMG_SERVER}/svg/ic_gold.svg");
+            }
+          }
+          &:nth-child(2) {
+            &::after {
+              background: url("#{$IMG_SERVER}/svg/ic_silver.svg");
+            }
+          }
+          &:nth-child(3) {
+            &::after {
+              background: url("#{$IMG_SERVER}/svg/ic_bronze.svg");
+            }
+          }
+
+          & img {
+            @include border-radius(50%);
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+      .fanMore {
+        position: relative;
+        margin-left: 4px;
+        width: 32px;
+        height: 32px;
+        display: inline;
+
+        background: url("#{$IMG_SERVER}/svg/more_circle_m.svg");
+        text-indent: -9999px;
+      }
+    }
+
+    .titleBox {
+      overflow: hidden;
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: $bold;
+      line-height: 24px;
+
+      .playName {
+        color: $greishBrown;
+        @include multi-ellipsis(1);
+      }
+
+      .userItem {
+        @include flexbox;
+        .nickName {
+          color: $primary;
+          @include multi-ellipsis(1);
+          cursor: pointer;
+        }
+        .fileNumber {
+          margin-left: 8px;
+          padding-left: 18px;
+          line-height: 16px;
+          color: $greishGray;
+          font-size: 14px;
+          background: url("#{$IMG_SERVER}/svg/icon_file_cilp.svg") left center
+            no-repeat;
+        }
+      }
+    }
+
+    .text {
+      margin-top: 16px;
+      .playInfo {
+        position: relative;
+        overflow: hidden;
+        padding: 12px 0 0;
+        font-size: 14px;
+        line-height: 22px;
+        color: $greishGray;
+        border-top: 1px solid $lighterGray;
+        .playText {
+          margin-bottom: 4px;
+          overflow: hidden;
+          height: 58px;
+          transition: max-height ease-in-out 0.4s;
+          word-break: break-word;
+          white-space: pre-wrap;
+        }
+        .btn {
+          display: block;
+          width: 100%;
+          height: 24px;
+          text-indent: -9999px;
+
+          span {
+            display: block;
+            margin: auto;
+            width: 24px;
+            height: 24px;
+            background: url("#{$IMG_SERVER}/svg/arrow_down_g.svg") center
+              no-repeat;
+            transition: all 0.2s linear;
+          }
+          &.on {
+            span {
+              transform: rotate(-180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .listTitle {
+    position: relative;
+    margin-top: 38px;
+
+    .titleBox {
+      font-weight: $bold;
+      font-size: 18px;
+      letter-spacing: -0.35px;
+    }
+
+    .subTitle {
+      display: block;
+      font-size: 12px;
+      color: $greishGray;
+      font-weight: $regular;
+    }
+
+    .btnAllPlay {
+      @include flex("", flex-start);
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $greishBrown;
+      font-size: 12px;
+      font-weight: $bold;
+      &::after {
+        content: "";
+        display: inline-block;
+        margin-left: 8px;
+        width: 32px;
+        height: 32px;
+        background: $primary url("#{$IMG_SERVER}/svg/play_purple_s_w.svg")
+          center no-repeat;
+        @include border-radius(50%);
+      }
+    }
+  }
+
+  .clipListWrap {
+    margin-top: 14px;
+    .rankingItem {
+      position: relative;
+      @include flex("", flex-start);
+      padding: 8px;
+      @include box-sizing;
+      @include border-radius(16px);
+
+      .thumbnail {
+        flex-shrink: 0;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+
+        img {
+          @include border-radius(12px);
+          width: 100%;
+          height: 100%;
+        }
+        .playTime {
+          position: absolute;
+          bottom: 3px;
+          right: 3px;
+          padding: 0 3px;
+          font-size: 10px;
+          @include border-radius(12px);
+          background: rgba($black, 0.6);
+          color: $white;
+          line-height: 14px;
+        }
+      }
+
+      .infoBox {
+        overflow: hidden;
+        flex: 1;
+        margin-left: 12px;
+        line-height: 16px;
+
+        .titleBox {
+          @include flexbox();
+          cursor: pointer;
+          font-size: 14px;
+          .category {
+            flex-shrink: 0;
+            color: $primary;
+
+            &::after {
+              display: inline-block;
+              margin: 0px 6px;
+              width: 1px;
+              height: 10px;
+              background: $mediumGray;
+              content: "";
+            }
+          }
+          .title {
+            color: #242424;
+            font-weight: $bold;
+            @include multi-ellipsis(1);
+          }
+        }
+
+        .nickName {
+          @include flex("", flex-start);
+          margin-top: 6px;
+          font-size: 12px;
+          color: $darkGray;
+          cursor: pointer;
+
+          p {
+            margin-left: 4px;
+            @include multi-ellipsis(1);
+          }
+
+          em {
+            text-indent: -9999px;
+          }
+        }
+
+        .scoreList {
+          @include flexbox;
+          margin-top: 6px;
+          cursor: pointer;
+
+          .scoreItem {
+            font-size: 12px;
+            color: $greishBrown;
+
+            & + li {
+              margin-left: 15px;
+            }
+
+            .icon {
+              padding-left: 20px;
+              &.message {
+                background: url("#{$IMG_SERVER}/svg/message_g_s.svg") left
+                  center no-repeat;
+              }
+
+              &.like {
+                background: url("#{$IMG_SERVER}/svg/ico_like_g_s.svg") left
+                  center no-repeat;
+              }
+            }
+          }
+        }
+      }
+      .buttonBox {
+        @include flexbox;
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+
+        button {
+          width: 24px;
+          height: 24px;
+          text-indent: -9999px;
+
+          & + button {
+            margin-left: 8px;
+          }
+
+          &.play {
+            background: url("#{$IMG_SERVER}/svg/play_Button.svg") no-repeat;
+          }
+
+          &.people {
+            background: url("#{$IMG_SERVER}/svg/ic_user_purple.svg") no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
