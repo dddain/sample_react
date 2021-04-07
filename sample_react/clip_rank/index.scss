@@ -1,0 +1,629 @@
+@import "src/asset/scss/common/global";
+
+#clipRankingPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  // 클립 랭킹 <header>
+  .headerWrap {
+    .benefitButton {
+      position: absolute;
+      right: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .dateBtnBox {
+    z-index: 2;
+
+    &.isFixed {
+      position: fixed;
+      top: 0;
+
+      &.mWeb {
+        top: 52px;
+      }
+    }
+
+    .dateButtonBox {
+      height: 36px;
+      border-bottom: 1px solid $lighterGray;
+      background-color: $white;
+      text-align: center;
+
+      .btn {
+        height: 36px;
+        margin: 0 10px;
+        font-size: 16px;
+
+        &.active {
+          border-bottom: 1px solid $primary;
+          color: $primary;
+          font-weight: $bold;
+        }
+      }
+    }
+
+    .dateHandleButtonBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+      padding: 0px 10px;
+      background: $primary;
+      color: $white;
+
+      h3 {
+        font-size: 16px;
+        font-weight: $bold;
+      }
+
+      .btn {
+        color: $white;
+        font-size: 14px;
+        font-weight: $bold;
+        opacity: 0.5;
+
+        &.Prev {
+          padding-left: 24px;
+          background: url("#{$IMG_SERVER}/svg/20200806/arrow_left_b.svg") left center no-repeat;
+        }
+        &.Next {
+          padding-right: 24px;
+          background: url("#{$IMG_SERVER}/svg/20200806/arrow_right_b.svg") right center no-repeat;
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // 상단 마이랭킹 리스트 디자인, 하단 바텀 리스트 공통 css
+  .rankingItem {
+    &.profile {
+      height: 76px;
+      box-sizing: border-box;
+      margin-bottom: 26px;
+
+      .rankBox {
+        .ranking {
+          background-color: $black;
+          color: $white;
+        }
+        .title {
+          color: $greishGray;
+          font-size: 12px;
+          text-indent: -22px;
+        }
+      }
+
+      .infoWrap {
+        .thumbBox {
+          img {
+            position: relative;
+            box-shadow: 3px 2px 4px 0 rgba(0, 0, 0, 0.16);
+          }
+          &::before {
+            content: "";
+            width: 44px;
+            height: 44px;
+            position: absolute;
+            left: 26px;
+            top: 8px;
+            background: url("#{$IMG_SERVER}/svg/ic_cd.svg") center no-repeat;
+          }
+        }
+        .textBox {
+          margin-left: 12px;
+          .nick {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    &:first-child {
+      margin-top: 0px;
+    }
+    .infoWrap {
+      .thumbBox {
+        cursor: pointer;
+
+        img {
+          border-radius: 12px;
+        }
+        &::before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: url("#{$IMG_SERVER}/svg/play_w_Button.svg") no-repeat center / 24px;
+        }
+      }
+
+      .textBox {
+        .titleBox {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+
+          .subject {
+            flex-shrink: 0;
+            font-size: 12px;
+            color: $primary;
+
+            &::after {
+              content: "";
+              display: inline-block;
+              flex-shrink: 0;
+              width: 1px;
+              height: 10px;
+              background: $mediumGray;
+              margin: 0px 6px;
+            }
+          }
+
+          .title {
+            color: #242424;
+            font-size: 12px;
+            font-weight: $bold;
+            @include multi-ellipsis(1);
+          }
+        }
+
+        .nick {
+          color: $primary;
+          cursor: pointer;
+        }
+
+        .detailBox {
+          display: flex;
+          margin-top: 3px;
+          cursor: pointer;
+          span {
+            padding-left: 16px;
+            margin-left: 8px;
+            color: $greishBrown;
+            font-size: 12px;
+            letter-spacing: -0.5px;
+            font-weight: $regular;
+            &:first-child {
+              margin-left: 0px;
+            }
+
+            &.headsetIcon {
+              background: url("#{$IMG_SERVER}/svg/visit_g_s.svg") left top no-repeat;
+              background-size: 16px;
+            }
+
+            &.giftIcon {
+              background: url("#{$IMG_SERVER}/svg/ic_gift.svg") left top no-repeat;
+              background-size: 16px;
+            }
+
+            &.heartIcon {
+              background: url("#{$IMG_SERVER}/svg/ico_like_g_s.svg") left top 1px no-repeat;
+              background-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .rankTop3Wrap {
+    // position: relative;
+    padding: 0 16px;
+    background-image: linear-gradient(to top, #a316c5 0%, $primary);
+
+    &.isFixed {
+      position: fixed;
+      top: 0;
+      margin-top: 93px;
+      @include box-sizing;
+
+      &.mWeb {
+        margin-top: 145px;
+      }
+    }
+  }
+
+  //랭킹 123위
+  .top3List {
+    display: flex;
+    width: 326px;
+    padding-bottom: 40px;
+    margin: 0 auto;
+
+    .top3Item {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+
+      &::before {
+        margin: 0 auto 0 auto;
+      }
+
+      .topBoxThumb {
+        text-align: center;
+
+        .dayThumbnail {
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          margin: auto;
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            height: auto;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url("#{$IMG_SERVER}/svg/play_w_Button.svg") no-repeat center;
+          }
+        }
+
+        .weekUser {
+          cursor: pointer;
+
+          img {
+            width: 100%;
+            margin-bottom: 4px;
+            border-radius: 50%;
+            @include box-sizing;
+          }
+          p {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: $bold;
+            color: $white;
+            @include multi-ellipsis(1);
+          }
+        }
+
+        .weekThumbnail {
+          margin-top: 10px;
+          cursor: pointer;
+          img {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+          }
+        }
+      }
+
+      .topTextBox {
+        width: 89px;
+        margin: 11px auto 0px auto;
+        color: $white;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+
+        .subject,
+        .nickName {
+          font-weight: $bold;
+          @include multi-ellipsis(1);
+        }
+
+        .category {
+          display: none;
+        }
+
+        .nickName {
+          font-size: 14px;
+        }
+
+        &.week {
+          margin-top: 8px;
+          .category {
+            display: block;
+            color: $white;
+            @include multi-ellipsis(1);
+          }
+          .nickName {
+            display: none;
+          }
+        }
+      }
+
+      &:nth-of-type(1) {
+        width: 110px;
+        order: 2;
+
+        &::before {
+          content: "";
+          width: 64px;
+          height: 64px;
+          background: url("#{$IMG_SERVER}/images/clip_rank/trophy_01@2x.png") no-repeat center / 64px;
+        }
+
+        .topBoxThumb {
+          margin-top: -11px;
+
+          .dayThumbnail {
+            width: 110px;
+            border: 3px solid #fdd341;
+            @include box-sizing;
+          }
+
+          .weekUser {
+            img {
+              width: 110px;
+              height: 110px;
+              border: 5px solid #fdd341;
+            }
+          }
+
+          .weekThumbnail {
+            img {
+              border: 3px solid #fdd341;
+            }
+          }
+        }
+      }
+
+      &:nth-of-type(2) {
+        width: 108px;
+        order: 1;
+
+        &::before {
+          content: "";
+          width: 50px;
+          height: 50px;
+          background: url("#{$IMG_SERVER}/images/clip_rank/trophy_02@2x.png") no-repeat center / 50px;
+        }
+
+        .topBoxThumb {
+          margin-top: -9px;
+          .dayThumbnail {
+            width: 77px;
+            border: 3px solid #8292e7;
+            @include box-sizing;
+
+            &::before {
+              content: "";
+              background: url("#{$IMG_SERVER}/svg/play_w_Button.svg") no-repeat center / 24px;
+            }
+          }
+
+          .weekUser {
+            img {
+              width: 94px;
+              height: 94px;
+              border: 5px solid #8292e7;
+            }
+          }
+          .weekThumbnail {
+            img {
+              border: 3px solid #8292e7;
+            }
+          }
+        }
+      }
+
+      &:nth-of-type(3) {
+        width: 108px;
+        order: 3;
+
+        &::before {
+          content: "";
+          width: 44px;
+          height: 44px;
+          background: url("#{$IMG_SERVER}/images/clip_rank/trophy_03@2x.png") no-repeat center / 44px;
+        }
+
+        .topBoxThumb {
+          margin-top: -8px;
+          .dayThumbnail {
+            width: 63px;
+            border: 3px solid #f38477;
+            @include box-sizing;
+
+            &::before {
+              content: "";
+              background: url("#{$IMG_SERVER}/svg/play_w_Button.svg") no-repeat center / 24px;
+            }
+          }
+
+          .weekUser {
+            img {
+              width: 86px;
+              height: 86px;
+              border: 5px solid #f38477;
+            }
+          }
+
+          .weekThumbnail {
+            img {
+              border: 3px solid #f38477;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 바텀 리스트 회색여백
+  .rankListWrap {
+    .allPlay {
+      display: flex;
+      margin: -5px 0 8px auto;
+      align-items: center;
+      color: $greishBrown;
+      font-weight: $bold;
+      font-size: 12px;
+      &::after {
+        content: "";
+        display: inline-block;
+        margin-left: 8px;
+        width: 24px;
+        height: 24px;
+        background: url("#{$IMG_SERVER}/svg/play_purple_s_w.svg") center no-repeat $primary;
+        background-size: 12px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.clipRankGuideWrap {
+  height: calc(100vh - 62px);
+  border-top: 12px solid $lighterGray;
+
+  .title {
+    margin-bottom: 18px;
+    padding: 16px 0px;
+    text-align: center;
+    background: $primary;
+    color: $yellow;
+    font-size: 14px;
+    font-weight: $bold;
+    letter-spacing: -0.35px;
+
+    p {
+      margin-top: 4px;
+      // font-weight: normal;
+      font-weight: $regular;
+      color: $white;
+    }
+  }
+
+  .guideContent {
+    padding: 0px 16px;
+    .pointCountBox {
+      border-radius: 20px;
+      padding: 18px 36px;
+      border: 1px solid $primary;
+      @include box-sizing;
+
+      li {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        margin-top: 9px;
+        padding: 3px 3px 3px 15px;
+        height: 30px;
+        @include box-sizing;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: $bold;
+        background: #efefef;
+        color: $greishBrown;
+        letter-spacing: -0.35px;
+
+        &:first-child {
+          margin-top: 0px;
+        }
+
+        span {
+          flex-shrink: 0;
+          margin-left: auto;
+          width: 98px;
+          height: 24px;
+          line-height: 24px;
+          border-radius: 20px;
+          text-align: center;
+          color: $white;
+          background: #ffb033;
+          font-weight: $bold;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .noticeList {
+    margin: 8px 0 32px;
+    font-size: 12px;
+    line-height: 20px;
+    color: $greishGray;
+    letter-spacing: -0.3px;
+  }
+
+  .tableBox {
+    margin-top: 24px;
+
+    &Notice {
+      padding: 8px 0px 50px 0px;
+      font-size: 12px;
+      color: $greishGray;
+      letter-spacing: -0.3px;
+      text-align: center;
+      strong {
+        font-weight: $bold;
+      }
+    }
+
+    &Title {
+      position: relative;
+      margin-bottom: 12px;
+      letter-spacing: -0.8px;
+      font-weight: $bold;
+    }
+
+    table {
+      &:nth-child(2) {
+        margin-bottom: 34px;
+      }
+      th {
+        padding: 6px 0;
+        border-top: 1px solid $primary;
+        border-bottom: 1px solid $primary;
+        font-size: 12px;
+        // font-weight: normal;
+        font-weight: $regular;
+        color: $primary;
+        letter-spacing: -0.8px;
+      }
+
+      td {
+        height: 37px;
+        line-height: 37px;
+        border-bottom: 1px solid $lightGray;
+        font-size: 12px;
+        text-align: center;
+        color: $greishBrown;
+        font-weight: $bold;
+
+        img {
+          display: inline-block;
+          vertical-align: middle;
+
+          &.dal {
+            width: 20px;
+            margin-bottom: 2px;
+          }
+        }
+
+        .badge {
+          display: inline-block;
+          padding: 0px 5px;
+          height: 26px;
+          line-height: 26px;
+          border-radius: 20px;
+          background-color: #8734ca;
+          font-size: 11px;
+          color: $white;
+
+          img {
+            width: 24px;
+            margin-top: -2px;
+            margin-right: 2px;
+          }
+        }
+      }
+    }
+  }
+}
